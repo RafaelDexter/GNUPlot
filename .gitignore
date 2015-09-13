@@ -1,0 +1,9 @@
+# Created by Dexter
+
+### GNUPlot ###
+# Backup files
+*.swp
+*.*~
+
+# PDF
+*.pdf
