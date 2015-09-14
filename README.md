@@ -18,7 +18,7 @@ Versão [5.0.1](http://sourceforge.net/projects/gnuplot/files/gnuplot/)
 ## Dependências
 ```sh
 apt-get -f install automake checkinstall libx11-dev libxt-dev libgd2-xpm-dev  liblua5.2-dev \
-libcairo2-dev libpango1.0-dev libreadline6-dev libwxgtk3.0-dev libwxgtk3.0-dev
+libcairo2-dev libpango1.0-dev libreadline6-dev libwxgtk3.0-dev
 ```
 ## Configurações preliminares
 ```sh
