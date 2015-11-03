@@ -29,6 +29,12 @@ ln -s /usr/lib/x86_64-linux-gnu/liblua5.2.so  /usr/lib/liblua.so
 
 ### Simples
 
+```sh
+./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot
+make
+make install
+```
+
 ### Recomendada
 
 ```sh
