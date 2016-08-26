@@ -33,9 +33,10 @@ Os pacotes necessários são:
 + libreadline6-dev
 + libwxgtk3.0-dev
 + libcanberra-gtk-dev
-+ libcerf-dev
++ libcerf-dev (somente no debian)
 
 você pode copiar e colar no seu terminal a seguinte linha:
+(se você estiver usando Ubuntu não coloque ```libcerf-dev```)
 
 ```sh
 root@dexter:~/Downloads# apt-get -f install automake checkinstall libx11-dev libxt-dev libgd2-xpm-dev \
