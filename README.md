@@ -38,8 +38,8 @@ Os pacotes necessários são:
 você pode copiar e colar no seu terminal a seguinte linha:
 
 ```
-# apt-get -f install automake checkinstall libx11-dev libxt-dev libgd2-xpm-dev \
-liblua5.3-dev libcairo2-dev libpango1.0-dev libreadline6-dev libwxgtk3.0-dev libcanberra-gtk-dev libcerf-dev
+# apt-get -f install automake checkinstall libx11-dev libxt-dev libgd2-xpm-dev liblua5.3-dev \
+libcairo2-dev libpango1.0-dev libreadline6-dev libwxgtk3.0-dev libcanberra-gtk-dev libcerf-dev
 ```
 :exclamation: Mas atenção, pode acontecer que você já tenha algum desses pacotes e seu Linux ignore a instalação de outros pacaotes. Caso isso aconteça, instale separadamente pacote por pacote. :sweat_smile:
 
