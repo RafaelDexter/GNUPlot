@@ -10,8 +10,8 @@ Site oficial: [GNUPlot](http://www.gnuplot.info/)
 
 # Instalação simples
 
-```sh
-apt-get -f install gnuplot5
+```
+# apt-get -f install gnuplot5
 ```
 
 Caso queria gráficos com qualidade vetorial, então siga a Instalação avançada.
@@ -27,30 +27,43 @@ Os pacotes necessários são:
 + libx11-dev
 + libxt-dev
 + libgd2-xpm-dev
-+ liblua5.2-dev
++ liblua5.3-dev
 + libcairo2-dev
 + libpango1.0-dev
 + libreadline6-dev
 + libwxgtk3.0-dev
 + libcanberra-gtk-dev
-+ libcerf-dev (somente no debian)
++ libcerf-dev
 
 você pode copiar e colar no seu terminal a seguinte linha:
-(se você estiver usando Ubuntu não coloque ```libcerf-dev```)
 
-```sh
-root@dexter:~/Downloads# apt-get -f install automake checkinstall libx11-dev libxt-dev libgd2-xpm-dev \
-liblua5.2-dev libcairo2-dev libpango1.0-dev libreadline6-dev libwxgtk3.0-dev libcanberra-gtk-dev libcerf-dev
 ```
-Mas atenção, pode acontecer que você já tenha algum desses pacotes e seu Linux ignore a instalação de outros pacaotes. Caso isso aconteça, instale separadamente pacote por pacote. :sweat_smile:
+# apt-get -f install automake checkinstall libx11-dev libxt-dev libgd2-xpm-dev \
+liblua5.3-dev libcairo2-dev libpango1.0-dev libreadline6-dev libwxgtk3.0-dev libcanberra-gtk-dev libcerf-dev
+```
+:exclamation: Mas atenção, pode acontecer que você já tenha algum desses pacotes e seu Linux ignore a instalação de outros pacaotes. Caso isso aconteça, instale separadamente pacote por pacote. :sweat_smile:
+
+:bangbang: Pode ocorrer o seguinte erro:
+
+```
+# apt-get install libcairo2-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Some packages could not be installed. This may mean that you have ...
+```
+
+[Solução](erros.md)
+
+
 
 ## Configurações preliminares
 
 Após ter instalado **todas** as depêndencias necessárias, é preciso criar dois *links* simbólicos. Acredito (:thought_balloon:) que para a maioria dos sistemas Linux o diretório não muda, estão basta copiar as seguintes linhas:
 
-```sh
-root@dexter:~/Downloads# ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/lua5.2.pc /usr/lib/pkgconfig/lua.pc
-root@dexter:~/Downloads# ln -s /usr/lib/x86_64-linux-gnu/liblua5.2.so /usr/lib/liblua.so
+```
+# ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/lua5.2.pc /usr/lib/pkgconfig/lua.pc
+# ln -s /usr/lib/x86_64-linux-gnu/liblua5.2.so /usr/lib/liblua.so
 ```
 ## Configuração final
 
@@ -58,26 +71,26 @@ Agora (ou antes, tanto faz  :stuck_out_tongue:) você deve fazer o *download* do
 
 ### Download
 
-Versão [5.0.3](http://sourceforge.net/projects/gnuplot/files/)
+Versão [5.0.5](http://sourceforge.net/projects/gnuplot/files/)
 
 ### Instalando
 
 Abra um terminal e vá até onde o *download* foi salvo. Para descompactar você pode utilizar o seguinte comando:
 
-```sh
-~/Downloads$ tar -zxvf gnuplot-5.0.3.tar.gz
+```
+$ tar -xzvf gnuplot-5.0.5.tar.gz
 ```
 
 Configure:
 
-```sh
-~/Downloads$ cd gnuplot-5.0.3
-~/gnuplot-5.0.3$ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+```
+$ cd gnuplot-5.0.5
+~/gnuplot-5.0.5$ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-wx-single-threaded --with-cairo > log.txt
 ```
 Se você estiver se perguntando "por que tem `> log.txt` ?" Este último parâmetro quer dizer que vou "jogar" toda a saída do `./configure` para o arquivo `log.txt`. Talvez você já sabia disso, mas o que você não sabe é que com esse parâmetro podemos identificar melhor as bibliotecas que estão faltando! Por exemplo:
 
-```sh
+```
 configure: WARNING:
 Package requirements (Qt5Core Qt5Gui Qt5Network Qt5Svg Qt5PrintSupport) were not met:
 
@@ -92,17 +105,15 @@ Seria um pouco difícil de achar o erros sem o `> log.txt`, pois esta mensagem
 estaria junto com todas as outras do `./configure`. Se este erro aparecer para
 você, então configure de outro modo:
 
-```sh
-~/Downloads$ cd gnuplot-5.0.3
-~/gnuplot-5.0.2$ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+```
+~/gnuplot-5.0.5$ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-wx-single-threaded --with-cairo --with-qt=no > log.txt
 ```
 
 ou
 
-```sh
-~/Downloads$ cd gnuplot-5.0.3
-~/gnuplot-5.0.2$ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+```
+~/gnuplot-5.0.5$ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-wx-single-threaded --with-cairo --with-qt=qt4 > log.txt
 ```
 
@@ -117,8 +128,8 @@ fique a vontade :sunglasses:
 Particularmente, gosto de utilizar os compiladores da Intel. A minha configuração
 ficou assim:
 
-```sh
-./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+```
+~/gnuplot-5.0.5$./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-wx-single-threaded --with-cairo --with-qt=no CXX=icpc CXXCPP='icpc -E' \
 CPPFLAGS='-g -O3 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/intel64 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/' \
 CXXFLAGS='-g -O3 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/intel64 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/' \
@@ -130,8 +141,8 @@ CC=icc CPP='icc -E' > log.txt
 
 Agora basta compilar, para isso executamos o comando `make` :
 
-```sh
-~/gnuplot-5.0.3$ make
+```
+~/gnuplot-5.0.5$ make
 ```
 
 Neste ponto acontecem muitos erros! Uma mensagem de erro que aparece mas não
@@ -153,16 +164,16 @@ make: *** [all] Error 2
 
 Você pocde "checar" se a compilação está correta rodando o seguinte comando:
 
-```sh
-root@dexter:~/gnuplot-5.0.3$ make check
+```
+root@dexter:~/gnuplot-5.0.5$ make check
 ```
 
 Se estiver tudo certo, aparecerá vários gráficos na tela.
 
 Por fim, você deve entrar como super-usuário :smoking: e:
 
-```sh
-root@dexter:~/gnuplot-5.0.3# make install
+```
+~/gnuplot-5.0.5# make install
 ```
 
 Pronto, está instalado, agora vamos testar.
@@ -171,8 +182,8 @@ Pronto, está instalado, agora vamos testar.
 
 ## Visual
 
-```sh
-root@dexter:~/gnuplot-5.0.3$ gnuplot
+```
+~/gnuplot-5.0.3$ gnuplot
 ```
 
 A seguinte mensagem deve aparecer:
@@ -231,7 +242,7 @@ gnuplot> q
 5
 
 ```
-~/gnuplot-5.0.2$ pdflatex nome.tex && evince nome.pdf
+~/gnuplot-5.0.5$ pdflatex nome.tex && evince nome.pdf
 ```
 
 Se tudo der certo, um gráfico idêntico ao anterior aparecerá, porém este será
