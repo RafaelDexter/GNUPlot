@@ -165,7 +165,7 @@ make: *** [all] Error 2
 Você pocde "checar" se a compilação está correta rodando o seguinte comando:
 
 ```
-root@dexter:~/gnuplot-5.0.5$ make check
+~/gnuplot-5.0.5$ make check
 ```
 
 Se estiver tudo certo, aparecerá vários gráficos na tela.
