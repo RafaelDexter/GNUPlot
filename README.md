@@ -62,8 +62,8 @@ Some packages could not be installed. This may mean that you have ...
 Após ter instalado **todas** as depêndencias necessárias, é preciso criar dois *links* simbólicos. Acredito (:thought_balloon:) que para a maioria dos sistemas Linux o diretório não muda, estão basta copiar as seguintes linhas:
 
 ```
-# ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/lua5.2.pc /usr/lib/pkgconfig/lua.pc
-# ln -s /usr/lib/x86_64-linux-gnu/liblua5.2.so /usr/lib/liblua.so
+# ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3.pc /usr/lib/pkgconfig/lua.pc
+# ln -s /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/lib/liblua.so
 ```
 ## Configuração final
 
