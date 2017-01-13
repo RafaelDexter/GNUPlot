@@ -53,7 +53,7 @@ Reading state information... Done
 Some packages could not be installed. This may mean that you have ...
 ```
 
-[Solução](erros.md)
+[Solução](./erros.md)
 
 
 
