@@ -1,5 +1,11 @@
 # GNUPlot
 
+```
+versão: 5.2.2
+
+Distro utilizada: Debian 9.3
+```
+
 ***
 
 ![graph1](http://www.gnuplot.info/figs/front2.png) ![graph2](http://www.gnuplot.info/figs/gaussians.png)
@@ -11,10 +17,10 @@ Site oficial: [GNUPlot](http://www.gnuplot.info/)
 # Instalação simples
 
 ```
-# apt-get -f install gnuplot5
+# apt install gnuplot
 ```
 
-Caso queria gráficos com qualidade vetorial, então siga a Instalação avançada.
+Caso queria gráficos com o terminal ```tikz```, então siga a Instalação avançada.
 
 # Instalação avançada
 
@@ -26,11 +32,11 @@ Os pacotes necessários são:
 + checkinstall
 + libx11-dev
 + libxt-dev
-+ libgd2-xpm-dev
++ libgd-dev
 + liblua5.3-dev
 + libcairo2-dev
 + libpango1.0-dev
-+ libreadline6-dev
++ libreadline-dev
 + libwxgtk3.0-dev
 + libcanberra-gtk-dev
 + libcerf-dev
@@ -38,15 +44,15 @@ Os pacotes necessários são:
 você pode copiar e colar no seu terminal a seguinte linha:
 
 ```
-# apt-get -f install automake checkinstall libx11-dev libxt-dev libgd2-xpm-dev liblua5.3-dev \
-libcairo2-dev libpango1.0-dev libreadline6-dev libwxgtk3.0-dev libcanberra-gtk-dev libcerf-dev
+# apt install automake checkinstall libx11-dev libxt-dev libgd-dev liblua5.3-dev libcairo2-dev \
+libpango1.0-dev libreadline-dev libwxgtk3.0-dev libcanberra-gtk-dev libcerf-dev
 ```
 :exclamation: Mas atenção, pode acontecer que você já tenha algum desses pacotes e seu Linux ignore a instalação de outros pacaotes. Caso isso aconteça, instale separadamente pacote por pacote. :sweat_smile:
 
 :bangbang: Pode ocorrer o seguinte erro:
 
 ```
-# apt-get install libcairo2-dev
+# apt install libcairo2-dev
 Reading package lists... Done
 Building dependency tree       
 Reading state information... Done
@@ -71,7 +77,7 @@ Agora (ou antes, tanto faz  :stuck_out_tongue:) você deve fazer o *download* do
 
 ### Download
 
-Versão [5.0.5](http://sourceforge.net/projects/gnuplot/files/)
+Versão [5.2.2](http://sourceforge.net/projects/gnuplot/files/)
 
 ### Instalando
 
@@ -84,8 +90,8 @@ $ tar -xzvf gnuplot-5.0.5.tar.gz
 Configure:
 
 ```
-$ cd gnuplot-5.0.5
-~/gnuplot-5.0.5$ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+$ cd gnuplot-5.2.2
+~/gnuplot-5.2.2 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-wx-single-threaded --with-cairo > log.txt
 ```
 Se você estiver se perguntando "por que tem `> log.txt` ?" Este último parâmetro quer dizer que vou "jogar" toda a saída do `./configure` para o arquivo `log.txt`. Talvez você já sabia disso, mas o que você não sabe é que com esse parâmetro podemos identificar melhor as bibliotecas que estão faltando! Por exemplo:
@@ -106,14 +112,14 @@ estaria junto com todas as outras do `./configure`. Se este erro aparecer para
 você, então configure de outro modo:
 
 ```
-~/gnuplot-5.0.5$ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+~/gnuplot-5.2.2 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-wx-single-threaded --with-cairo --with-qt=no > log.txt
 ```
 
 ou
 
 ```
-~/gnuplot-5.0.5$ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+~/gnuplot-5.2.2 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-wx-single-threaded --with-cairo --with-qt=qt4 > log.txt
 ```
 
@@ -129,7 +135,7 @@ Particularmente, gosto de utilizar os compiladores da Intel. A minha configuraç
 ficou assim:
 
 ```
-~/gnuplot-5.0.5$./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+~/gnuplot-5.2.2 $./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-wx-single-threaded --with-cairo --with-qt=no CXX=icpc CXXCPP='icpc -E' \
 CPPFLAGS='-g -O3 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/intel64 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/' \
 CXXFLAGS='-g -O3 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/intel64 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/' \
@@ -142,22 +148,22 @@ CC=icc CPP='icc -E' > log.txt
 Agora basta compilar, para isso executamos o comando `make` :
 
 ```
-~/gnuplot-5.0.5$ make
+~/gnuplot-5.2.2 $ make
 ```
 
 Neste ponto acontecem muitos erros! Uma mensagem de erro que aparece mas não
 impede do GNUPlot funcionar é esta:
 
 ```
-make[2]: Entering directory '/home/dexter/Downloads/gnuplot-5.0.3/docs'
+make[2]: Entering directory '/home/dexter/Downloads/gnuplot-5.2.2/docs'
 lua ../term/lua/gnuplot-tikz.lua termhelp > gnuplot-tikz.help
 /bin/bash: lua: command not found
 Makefile:904: recipe for target 'gnuplot-tikz.help' failed
 make[2]: *** [gnuplot-tikz.help] Error 127
-make[2]: Leaving directory '/home/dexter/Downloads/gnuplot-5.0.3/docs'
+make[2]: Leaving directory '/home/dexter/Downloads/gnuplot-5.2.2/docs'
 Makefile:418: recipe for target 'all-recursive' failed
 make[1]: *** [all-recursive] Error 1
-make[1]: Leaving directory '/home/dexter/Downloads/gnuplot-5.0.3'
+make[1]: Leaving directory '/home/dexter/Downloads/gnuplot-5.2.2'
 Makefile:356: recipe for target 'all' failed
 make: *** [all] Error 2
 ```
@@ -165,7 +171,7 @@ make: *** [all] Error 2
 Você pocde "checar" se a compilação está correta rodando o seguinte comando:
 
 ```
-~/gnuplot-5.0.5$ make check
+~/gnuplot-5.2.2 $ make check
 ```
 
 Se estiver tudo certo, aparecerá vários gráficos na tela.
@@ -173,7 +179,7 @@ Se estiver tudo certo, aparecerá vários gráficos na tela.
 Por fim, você deve entrar como super-usuário :smoking: e:
 
 ```
-~/gnuplot-5.0.5# make install
+~/gnuplot-5.2.2 # make install
 ```
 
 Pronto, está instalado, agora vamos testar.
@@ -183,7 +189,7 @@ Pronto, está instalado, agora vamos testar.
 ## Visual
 
 ```
-~/gnuplot-5.0.3$ gnuplot
+~/gnuplot-5.2.2 $ gnuplot
 ```
 
 A seguinte mensagem deve aparecer:
@@ -242,7 +248,7 @@ gnuplot> q
 5
 
 ```
-~/gnuplot-5.0.5$ pdflatex nome.tex && evince nome.pdf
+~/gnuplot-5.2.2 $ pdflatex nome.tex && evince nome.pdf
 ```
 
 Se tudo der certo, um gráfico idêntico ao anterior aparecerá, porém este será
