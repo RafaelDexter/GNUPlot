@@ -1,11 +1,5 @@
 # GNUPlot
 
-```
-versão: 5.2.2
-
-Distro utilizada: Debian 9.3
-```
-
 ***
 
 ![graph1](http://www.gnuplot.info/figs/front2.png) ![graph2](http://www.gnuplot.info/figs/gaussians.png)
@@ -23,6 +17,12 @@ Site oficial: [GNUPlot](http://www.gnuplot.info/)
 Caso queria gráficos com o terminal ```tikz```, então siga a Instalação avançada.
 
 # Instalação avançada
+
+```
+versão: 5.2.2
+
+Distro utilizada: Debian 9.3
+```
 
 ## Dependências
 
@@ -84,7 +84,7 @@ Versão [5.2.2](http://sourceforge.net/projects/gnuplot/files/)
 Abra um terminal e vá até onde o *download* foi salvo. Para descompactar você pode utilizar o seguinte comando:
 
 ```
-$ tar -xzvf gnuplot-5.0.5.tar.gz
+$ tar -xzvf gnuplot-5.2.2.tar.gz
 ```
 
 Configure:
@@ -135,12 +135,14 @@ Particularmente, gosto de utilizar os compiladores da Intel. A minha configuraç
 ficou assim:
 
 ```
-~/gnuplot-5.2.2 $./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
---with-wx-single-threaded --with-cairo --with-qt=no CXX=icpc CXXCPP='icpc -E' \
-CPPFLAGS='-g -O3 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/intel64 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/' \
-CXXFLAGS='-g -O3 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/intel64 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/' \
-CFLAGS='-g -O3 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/intel64 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/compiler/include/' \
-CC=icc CPP='icc -E' > log.txt
+~/gnuplot-5.2.2 $ INTEL18="/opt/intel/compilers_and_libraries_2018.1.163/linux" ; export INTEL18
+
+~/gnuplot-5.2.2 $ ./configure --with-readline=gnu --with-lua=yes --with-cairo --with-qt=no \
+--with-tutorial --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+CC="icc -O3 -xHost" CPP="icc -E" CXX="icpc -O3 -xHost" CXXCPP="icpc -E" \
+CPPFLAGS="-g -I$INTEL18/compiler/include/intel64 -I$INTEL18/compiler/include/" \
+CXXFLAGS="-g -I$INTEL18/compiler/include/intel64 -I$INTEL18/compiler/include/" \
+CFLAGS="-g -I$INTEL18/compiler/include/intel64 -I$INTEL18/compiler/include/" > log.txt
 ```
 
 ***
