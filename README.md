@@ -153,8 +153,8 @@ Agora basta compilar, para isso executamos o comando `make` :
 ~/gnuplot-5.2.2 $ make
 ```
 
-Neste ponto acontecem muitos erros! Uma mensagem de erro que aparece mas não
-impede do GNUPlot funcionar é esta:
+Neste ponto acontecem muitos erros! As mensagens de erro que aparecem mas não
+impede do GNUPlot funcionar são estas:
 
 ```
 make[2]: Entering directory '/home/dexter/Downloads/gnuplot-5.2.2/docs'
@@ -198,16 +198,16 @@ A seguinte mensagem deve aparecer:
 
 ```
 	G N U P L O T
-	Version 5.0 patchlevel 3    last modified 2016-02-21 
+	Version 5.2 patchlevel 2    last modified 2017-11-15 
 
-	Copyright (C) 1986-1993, 1998, 2004, 2007-2016
+	Copyright (C) 1986-1993, 1998, 2004, 2007-2017
 	Thomas Williams, Colin Kelley and many others
 
 	gnuplot home:     http://www.gnuplot.info
 	faq, bugs, etc:   type "help FAQ"
 	immediate help:   type "help"  (plot window: hit 'h')
 
-Terminal type set to 'qt'
+Terminal type set to 'wxt'
 gnuplot>
 ```
 
