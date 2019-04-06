@@ -139,10 +139,11 @@ ficou assim:
 
 ~/gnuplot-5.2.2 $ ./configure --with-readline=gnu --with-lua=yes --with-cairo --with-qt=no \
 --with-tutorial --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
-CC="icc -O3 -xHost" CPP="icc -E" CXX="icpc -O3 -xHost" CXXCPP="icpc -E" \
-CPPFLAGS="-g -I$INTEL18/compiler/include/intel64 -I$INTEL18/compiler/include/" \
-CXXFLAGS="-g -I$INTEL18/compiler/include/intel64 -I$INTEL18/compiler/include/" \
-CFLAGS="-g -I$INTEL18/compiler/include/intel64 -I$INTEL18/compiler/include/" > log.txt
+CC="icc -O3 -xHost" CPP="icc -EP" CXX="icpc -O3 -xHost" CXXCPP="icpc -EP" \
+CPPFLAGS="-g -I$INTEL19/compiler/include/intel64 -I$INTEL19/compiler/include/" \
+CXXFLAGS="-g -I$INTEL19/compiler/include/intel64 -I$INTEL19/compiler/include/" \
+LDFLAGS="-Wl,--start-group $INTEL19/mkl/lib/intel64/libmkl_intel_lp64.a $INTEL19/mkl/lib/intel64/libmkl_sequential.a $INTEL19/mkl/lib/intel64/libmkl_core.a -Wl,--end-group -lpthread -lm -ldl" \
+CFLAGS="-g -I$INTEL19/compiler/include/intel64 -I$INTEL19/compiler/include/" > log.txt
 ```
 
 ***
