@@ -7,6 +7,7 @@
 O melhor utilitário de representação gráfica para Linux
 
 Site oficial: [GNUPlot](http://www.gnuplot.info/)
+
 Ultima atualização: 10/11/2019
 
 # Instalação simples
