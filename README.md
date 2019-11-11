@@ -7,6 +7,7 @@
 O melhor utilitário de representação gráfica para Linux
 
 Site oficial: [GNUPlot](http://www.gnuplot.info/)
+Ultima atualização: 10/11/2019
 
 # Instalação simples
 
@@ -19,9 +20,9 @@ Caso queria gráficos com o terminal ```tikz```, então siga a Instalação avan
 # Instalação avançada
 
 ```
-versão: 5.2.2
+versão: 5.2.7
 
-Distro utilizada: Debian 9.3
+Distro utilizada: Ubuntu 18.04 LTS
 ```
 
 ## Dependências
@@ -77,22 +78,22 @@ Agora (ou antes, tanto faz  :stuck_out_tongue:) você deve fazer o *download* do
 
 ### Download
 
-Versão [5.2.2](http://sourceforge.net/projects/gnuplot/files/)
+Versão [5.2.7](http://sourceforge.net/projects/gnuplot/files/)
 
 ### Instalando
 
 Abra um terminal e vá até onde o *download* foi salvo. Para descompactar você pode utilizar o seguinte comando:
 
 ```
-$ tar -xzvf gnuplot-5.2.2.tar.gz
+$ tar -xzvf gnuplot-5.2.7.tar.gz
 ```
 
-Configure:
+Como configurar (configure):
 
 ```
-$ cd gnuplot-5.2.2
-~/gnuplot-5.2.2 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
---with-wx-single-threaded --with-cairo > log.txt
+$ cd gnuplot-5.2.7
+~/gnuplot-5.2.7 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+--with-cairo > log.txt
 ```
 Se você estiver se perguntando "por que tem `> log.txt` ?" Este último parâmetro quer dizer que vou "jogar" toda a saída do `./configure` para o arquivo `log.txt`. Talvez você já sabia disso, mas o que você não sabe é que com esse parâmetro podemos identificar melhor as bibliotecas que estão faltando! Por exemplo:
 
@@ -107,20 +108,20 @@ No package 'Qt5Svg' found
 No package 'Qt5PrintSupport' found
 ```
 
-Seria um pouco difícil de achar o erros sem o `> log.txt`, pois esta mensagem
+Seria um pouco difícil de achar os erros sem o `> log.txt`, pois esta mensagem
 estaria junto com todas as outras do `./configure`. Se este erro aparecer para
 você, então configure de outro modo:
 
 ```
-~/gnuplot-5.2.2 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
---with-wx-single-threaded --with-cairo --with-qt=no > log.txt
+~/gnuplot-5.2.7 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+--with-cairo --with-qt=no > log.txt
 ```
 
 ou
 
 ```
-~/gnuplot-5.2.2 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
---with-wx-single-threaded --with-cairo --with-qt=qt4 > log.txt
+~/gnuplot-5.2.7 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+--with-cairo --with-qt=qt4 > log.txt
 ```
 
  :bangbang: O importante é achar o caminho correto para o diretório **gnuplot**
@@ -135,9 +136,9 @@ Particularmente, gosto de utilizar os compiladores da Intel. A minha configuraç
 ficou assim:
 
 ```
-~/gnuplot-5.2.2 $ INTEL18="/opt/intel/compilers_and_libraries_2018.1.163/linux" ; export INTEL18
+~/gnuplot-5.2.7 $ INTEL18="/opt/intel/compilers_and_libraries_2018.1.163/linux" ; export INTEL18
 
-~/gnuplot-5.2.2 $ ./configure --with-readline=gnu --with-lua=yes --with-cairo --with-qt=no \
+~/gnuplot-5.2.7 $ ./configure --with-readline=gnu --with-lua=yes --with-cairo --with-qt=no \
 --with-tutorial --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 CC="icc -O3 -xHost" CPP="icc -EP" CXX="icpc -O3 -xHost" CXXCPP="icpc -EP" \
 CPPFLAGS="-g -I$INTEL19/compiler/include/intel64 -I$INTEL19/compiler/include/" \
@@ -151,11 +152,11 @@ CFLAGS="-g -I$INTEL19/compiler/include/intel64 -I$INTEL19/compiler/include/" > l
 Agora basta compilar, para isso executamos o comando `make` :
 
 ```
-~/gnuplot-5.2.2 $ make
+~/gnuplot-5.2.7 $ make
 ```
 
 Neste ponto acontecem muitos erros! As mensagens de erro que aparecem mas não
-impede do GNUPlot funcionar são estas:
+impedem do GNUPlot funcionar são estas:
 
 ```
 make[2]: Entering directory '/home/dexter/Downloads/gnuplot-5.2.2/docs'
@@ -174,7 +175,7 @@ make: *** [all] Error 2
 Você pocde "checar" se a compilação está correta rodando o seguinte comando:
 
 ```
-~/gnuplot-5.2.2 $ make check
+~/gnuplot-5.2.7 $ make check
 ```
 
 Se estiver tudo certo, aparecerá vários gráficos na tela.
@@ -182,7 +183,11 @@ Se estiver tudo certo, aparecerá vários gráficos na tela.
 Por fim, você deve entrar como super-usuário :smoking: e:
 
 ```
-~/gnuplot-5.2.2 # make install
+~/gnuplot-5.2.7 $ sudo make install
+```
+ou já no modo de superusuário:
+```
+~/gnuplot-5.2.7 # make install
 ```
 
 Pronto, está instalado, agora vamos testar.
@@ -192,14 +197,14 @@ Pronto, está instalado, agora vamos testar.
 ## Visual
 
 ```
-~/gnuplot-5.2.2 $ gnuplot
+~/gnuplot-5.2.7 $ gnuplot
 ```
 
 A seguinte mensagem deve aparecer:
 
 ```
 	G N U P L O T
-	Version 5.2 patchlevel 2    last modified 2017-11-15 
+	Version 5.2 patchlevel 7    last modified 2017-11-15 
 
 	Copyright (C) 1986-1993, 1998, 2004, 2007-2017
 	Thomas Williams, Colin Kelley and many others
