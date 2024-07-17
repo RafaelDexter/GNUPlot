@@ -22,7 +22,7 @@ Caso queria gráficos com o terminal ```tikz```, então siga a Instalação avan
 # Instalação avançada
 
 ```
-versão: 5.4.9
+Versão do GNUPlot: 6.0.1
 
 Distro utilizada: Ubuntu 24.04 LTS
 ```
@@ -99,14 +99,14 @@ Ou vá você mesmo no site do GnuPlot: http://www.gnuplot.info caso desconfiar d
 Abra um terminal e vá até onde o *download* foi salvo. Para descompactar você pode utilizar o seguinte comando:
 
 ```
-tar -xzvf gnuplot-5.4.9.tar.gz
+tar -xzvf gnuplot-6.0.1.tar.gz
 ```
 
 Como configurar (configure):
 
 ```
-cd gnuplot-5.4.9
-~/gnuplot-5.4.9 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+cd gnuplot-6.0.1
+~/gnuplot-6.0.1 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-cairo
 ```
 Se você estiver se perguntando "por que tem `> log.txt` ?" Este último parâmetro quer dizer que vou "jogar" toda a saída do `./configure` para o arquivo `log.txt`. Talvez você já sabia disso, mas o que você não sabe é que com esse parâmetro podemos identificar melhor as bibliotecas que estão faltando! Por exemplo:
@@ -127,14 +127,14 @@ estaria junto com todas as outras do `./configure`. Se este erro aparecer para
 você, então configure de outro modo:
 
 ```
-~/gnuplot-5.4.9 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+~/gnuplot-6.0.1 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-cairo --with-qt=no > log.txt
 ```
 
 ou, com o terminal QT, 
 
 ```
-~/gnuplot-5.4.9 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
+~/gnuplot-6.0.1 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
 --with-cairo --with-qt=qt4 > log.txt
 ```
 
@@ -144,7 +144,7 @@ dentro do diretório **LaTeX**
 Agora basta compilar, para isso executamos o comando `make` :
 
 ```
-~/gnuplot-5.4.9 $ make
+~/gnuplot-6.0.1 $ make
 ```
 
 Neste ponto acontecem muitos erros! 
@@ -152,7 +152,7 @@ Neste ponto acontecem muitos erros!
 Você pocde "checar" se a compilação está correta rodando o seguinte comando:
 
 ```
-~/gnuplot-5.4.9 $ make check
+~/gnuplot-6.0.1 $ make check
 ```
 
 Se estiver tudo certo, aparecerá vários gráficos na tela.
@@ -160,11 +160,11 @@ Se estiver tudo certo, aparecerá vários gráficos na tela.
 Por fim, você deve entrar como super-usuário :smoking: e:
 
 ```
-~/gnuplot-5.4.9 $ sudo make install
+~/gnuplot-6.0.1 $ sudo make install
 ```
 ou já no modo de superusuário:
 ```
-~/gnuplot-5.4.9 # make install
+~/gnuplot-6.0.1 # make install
 ```
 
 Pronto, está instalado, agora vamos testar.
@@ -174,7 +174,7 @@ Pronto, está instalado, agora vamos testar.
 ## Visual
 
 ```
-~/gnuplot-5.4.9 $ gnuplot
+~/gnuplot-6.0.1 $ gnuplot
 ```
 
 A seguinte mensagem deve aparecer:
@@ -231,7 +231,7 @@ gnuplot> q
 5
 
 ```
-~/gnuplot-5.4.9 $ pdflatex nome.tex && evince nome.pdf
+~/gnuplot-6.0.1 $ pdflatex nome.tex && evince nome.pdf
 ```
 
 Se tudo der certo, um gráfico idêntico ao anterior aparecerá, porém este será
