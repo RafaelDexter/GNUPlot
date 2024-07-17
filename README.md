@@ -8,7 +8,8 @@ O melhor utilitário de representação gráfica para Linux
 
 Site oficial: [GNUPlot](http://www.gnuplot.info/)
 
-Ultima atualização: 08/10/2023
+                    08/10/2023  
+Ultima atualização: 16/07/2024
 
 # Instalação simples
 
@@ -23,7 +24,7 @@ Caso queria gráficos com o terminal ```tikz```, então siga a Instalação avan
 ```
 versão: 5.4.9
 
-Distro utilizada: Ubuntu 22.04 LTS
+Distro utilizada: Ubuntu 24.04 LTS
 ```
 
 ## Dependências
@@ -39,7 +40,7 @@ Os pacotes necessários são:
 + liblua5.4-dev
 + libcairo2-dev
 + libpango1.0-dev
-+ llibwxgtk3.0-gtk3-dev
++ libwxgtk3.2-dev
 + libcanberra-gtk-dev
 + libcerf-dev
 + lua5.4
@@ -49,7 +50,7 @@ você pode copiar e colar no seu terminal a seguinte linha:
 
 ```
 sudo apt install automake checkinstall libx11-dev libxt-dev libgd-dev libreadline-dev liblua5.4-dev libcairo2-dev \
-libpango1.0-dev libwxgtk3.0-gtk3-dev libcanberra-gtk-dev libcerf-dev lua5.4
+libpango1.0-dev libwxgtk3.2-dev libcanberra-gtk-dev libcerf-dev lua5.4
 ```
 
 Prefiro fazer nessa ordem e depois intalar o LaTeX completo:
