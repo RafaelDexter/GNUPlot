@@ -80,7 +80,7 @@ Some packages could not be installed. This may mean that you have ...
 Após ter instalado **todas** as depêndencias necessárias, é preciso criar dois *links* simbólicos. Acredito (:thought_balloon:) que para a maioria dos sistemas Linux o diretório não muda, então basta copiar as seguintes linhas:
 
 ```
-sudo ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/lua5.4.pc /usr/lib/pkgconfig/lua.pc
+sudo ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/lua5.4.pc /usr/lib/pkgconfig/lua.pc  && \
 sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.4.so /usr/lib/liblua.so
 ```
 
@@ -90,7 +90,7 @@ Agora (ou antes, tanto faz  :stuck_out_tongue:) você deve fazer o *download* do
 
 ### Download
 
-Versão [5.4.9](http://sourceforge.net/projects/gnuplot/files/)
+Versão [6.0.1](http://sourceforge.net/projects/gnuplot/files/)
 
 Ou vá você mesmo no site do GnuPlot: http://www.gnuplot.info caso desconfiar do meu link!
 
@@ -181,16 +181,16 @@ A seguinte mensagem deve aparecer:
 
 ```
 	G N U P L O T
-	Version 5.4 patchlevel 9    last modified 2023-09-04
+	Version 6.0 patchlevel 1    last modified 2024-05-13 
 
-	Copyright (C) 1986-1993, 1998, 2004, 2007-2023
+	Copyright (C) 1986-1993, 1998, 2004, 2007-2024
 	Thomas Williams, Colin Kelley and many others
 
 	gnuplot home:     http://www.gnuplot.info
 	faq, bugs, etc:   type "help FAQ"
 	immediate help:   type "help"  (plot window: hit 'h')
 
-Terminal type is now 'wxt'
+	Terminal type is now wxt
 gnuplot> 
 
 
