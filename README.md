@@ -25,7 +25,7 @@ A cada nova versão LTS do Ubuntu, o processo de instalação é revisado, testa
 | Ubuntu | GNUPlot | Status | Guia |
 |:------:|:-------:|:------:|:----:|
 | 24.04 LTS (Noble Numbat) | 6.0.1 | ✅ Concluído | [📄 Instalação no Ubuntu 24.04](https://github.com/RafaelDexter/GNUPlot/blob/master/ubuntu-24.04.md) |
-| 26.04 LTS | — | 🚧 Em breve | [📄 Instalação no Ubuntu 26.04](https://github.com/RafaelDexter/GNUPlot/blob/master/ubuntu-26.04.md) |
+| 26.04 LTS | — | ✅ Concluído | [📄 Instalação no Ubuntu 26.04](https://github.com/RafaelDexter/GNUPlot/blob/master/ubuntu-26.04.md) |
 
 > 💡 **Escolha o guia correspondente à sua versão do Ubuntu.** As dependências e os caminhos de bibliotecas mudam entre as versões — usar o guia errado pode gerar erros de compilação.
 
