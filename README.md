@@ -1,240 +1,72 @@
-# GNUPlot
+<div align="center">
 
-***
+# GNUPlot — Compilação a partir do código-fonte
 
 ![graph1](http://www.gnuplot.info/figs/front2.png) ![graph2](http://www.gnuplot.info/figs/gaussians.png)
 
-O melhor utilitário de representação gráfica para Linux
+**O melhor utilitário de representação gráfica para Linux**
 
-Site oficial: [GNUPlot](http://www.gnuplot.info/)
+[![Site oficial](https://img.shields.io/badge/Site-gnuplot.info-blue)](http://www.gnuplot.info/)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-LTS-E95420?logo=ubuntu&logoColor=white)](https://ubuntu.com/)
+[![LaTeX](https://img.shields.io/badge/Terminal-TikZ-008080)](https://www.ctan.org/pkg/pgf)
 
-                    08/10/2023  
-Ultima atualização: 16/07/2024
+</div>
 
-# Instalação simples
+---
 
-```
+## 📖 Sobre este repositório
+
+Este repositório documenta o processo completo de **compilação do GNUPlot a partir do código-fonte** no Ubuntu, com suporte ao terminal `tikz` — essencial para gerar gráficos com qualidade tipográfica LaTeX.
+
+A cada nova versão LTS do Ubuntu, o processo de instalação é revisado, testado e documentado em uma página própria. Assim, este repositório serve como um **histórico versionado de instalações**, facilitando a reinstalação e a adaptação às mudanças de dependências entre as versões do sistema.
+
+## 🗂️ Guias de instalação por versão
+
+| Ubuntu | GNUPlot | Status | Guia |
+|:------:|:-------:|:------:|:----:|
+| 24.04 LTS (Noble Numbat) | 6.0.1 | ✅ Concluído | [📄 Instalação no Ubuntu 24.04](./ubuntu-24.04/README.md) |
+| 26.04 LTS | — | 🚧 Em breve | [📄 Instalação no Ubuntu 26.04](./ubuntu-26.04/README.md) |
+
+> 💡 **Escolha o guia correspondente à sua versão do Ubuntu.** As dependências e os caminhos de bibliotecas mudam entre as versões — usar o guia errado pode gerar erros de compilação.
+
+## ⚡ Instalação rápida (sem TikZ)
+
+Se você **não** precisa do terminal `tikz`, a instalação pelos repositórios oficiais é suficiente:
+
+```bash
 sudo apt install gnuplot
 ```
 
-Caso queria gráficos com o terminal ```tikz```, então siga a Instalação avançada.
+Caso queira gráficos com o terminal `tikz` integrados ao LaTeX, siga o guia de compilação da sua versão do Ubuntu na tabela acima.
 
-# Instalação avançada
+## 🎯 Por que compilar da fonte?
 
-```
-Versão do GNUPlot: 6.0.1
+- ✅ Suporte completo ao terminal **`tikz`** (gráficos nativos em LaTeX)
+- ✅ Suporte a **Lua** e **Cairo**
+- ✅ Versão mais recente do GNUPlot, antes de chegar aos repositórios
+- ✅ Controle total sobre os terminais e recursos habilitados
 
-Distro utilizada: Ubuntu 24.04 LTS
-```
-
-## Dependências
-
-Os pacotes necessários são:
-
-+ automake
-+ checkinstall
-+ libx11-dev
-+ libxt-dev
-+ libgd-dev
-+ libreadline-dev
-+ liblua5.4-dev
-+ libcairo2-dev
-+ libpango1.0-dev
-+ libwxgtk3.2-dev
-+ libcanberra-gtk-dev
-+ libcerf-dev
-+ lua5.4
-+ texlive-full (Eu prefiro instalar tudo!)
-
-você pode copiar e colar no seu terminal a seguinte linha:
+## 📚 Estrutura do repositório
 
 ```
-sudo apt install automake checkinstall libx11-dev libxt-dev libgd-dev libreadline-dev liblua5.4-dev libcairo2-dev \
-libpango1.0-dev libwxgtk3.2-dev libcanberra-gtk-dev libcerf-dev lua5.4
+.
+├── README.md            ← você está aqui
+├── ubuntu-24.04/        ← guia completo para Ubuntu 24.04 LTS (GNUPlot 6.0.1)
+│   ├── README.md
+│   └── erros.md
+└── ubuntu-26.04/        ← guia para Ubuntu 26.04 LTS (em construção)
 ```
 
-Prefiro fazer nessa ordem e depois intalar o LaTeX completo:
+## 🔗 Links úteis
 
-```
-sudo apt install texlive-full
-```
+- [Site oficial do GNUPlot](http://www.gnuplot.info/)
+- [Downloads (SourceForge)](http://sourceforge.net/projects/gnuplot/files/)
+- [Documentação do terminal TikZ](http://www.gnuplot.info/docs/)
 
-:exclamation: Mas atenção, pode acontecer que você já tenha algum desses pacotes e seu Linux ignore a instalação de outros pacaotes. Caso isso aconteça, instale separadamente pacote por pacote. :sweat_smile:
+---
 
-:bangbang: Pode ocorrer o seguinte erro:
+<div align="center">
 
-```
-# apt install libcairo2-dev
-Reading package lists... Done
-Building dependency tree       
-Reading state information... Done
-Some packages could not be installed. This may mean that you have ...
-```
+Mantido por **RafaelDexter** · Primeira versão: 08/10/2023
 
-[Solução](./erros.md)
-
-
-
-## Configurações preliminares
-
-Após ter instalado **todas** as depêndencias necessárias, é preciso criar dois *links* simbólicos. Acredito (:thought_balloon:) que para a maioria dos sistemas Linux o diretório não muda, então basta copiar as seguintes linhas:
-
-```
-sudo ln -s /usr/lib/x86_64-linux-gnu/pkgconfig/lua5.4.pc /usr/lib/pkgconfig/lua.pc  && \
-sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.4.so /usr/lib/liblua.so
-```
-
-## Configuração final
-
-Agora (ou antes, tanto faz  :stuck_out_tongue:) você deve fazer o *download* do código do programa:
-
-### Download
-
-Versão [6.0.1](http://sourceforge.net/projects/gnuplot/files/)
-
-Ou vá você mesmo no site do GnuPlot: http://www.gnuplot.info caso desconfiar do meu link!
-
-### Instalando
-
-Abra um terminal e vá até onde o *download* foi salvo. Para descompactar você pode utilizar o seguinte comando:
-
-```
-tar -xzvf gnuplot-6.0.1.tar.gz
-```
-
-Como configurar (configure):
-
-```
-cd gnuplot-6.0.1
-~/gnuplot-6.0.1 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
---with-cairo
-```
-Se você estiver se perguntando "por que tem `> log.txt` ?" Este último parâmetro quer dizer que vou "jogar" toda a saída do `./configure` para o arquivo `log.txt`. Talvez você já sabia disso, mas o que você não sabe é que com esse parâmetro podemos identificar melhor as bibliotecas que estão faltando! Por exemplo:
-
-```
-configure: WARNING:
-Package requirements (Qt5Core Qt5Gui Qt5Network Qt5Svg Qt5PrintSupport) were not met:
-
-No package 'Qt5Core' found
-No package 'Qt5Gui' found
-No package 'Qt5Network' found
-No package 'Qt5Svg' found
-No package 'Qt5PrintSupport' found
-```
-
-Seria um pouco difícil de achar os erros sem o `> log.txt`, pois esta mensagem
-estaria junto com todas as outras do `./configure`. Se este erro aparecer para
-você, então configure de outro modo:
-
-```
-~/gnuplot-6.0.1 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
---with-cairo --with-qt=no > log.txt
-```
-
-ou, com o terminal QT, 
-
-```
-~/gnuplot-6.0.1 $ ./configure --with-lua=yes --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
---with-cairo --with-qt=qt4 > log.txt
-```
-
- :bangbang: O importante é achar o caminho correto para o diretório **gnuplot**
-dentro do diretório **LaTeX**
-
-Agora basta compilar, para isso executamos o comando `make` :
-
-```
-~/gnuplot-6.0.1 $ make
-```
-
-Neste ponto acontecem muitos erros! 
-
-Você pocde "checar" se a compilação está correta rodando o seguinte comando:
-
-```
-~/gnuplot-6.0.1 $ make check
-```
-
-Se estiver tudo certo, aparecerá vários gráficos na tela.
-
-Por fim, você deve entrar como super-usuário :smoking: e:
-
-```
-~/gnuplot-6.0.1 $ sudo make install
-```
-ou já no modo de superusuário:
-```
-~/gnuplot-6.0.1 # make install
-```
-
-Pronto, está instalado, agora vamos testar.
-
-# Teste
-
-## Visual
-
-```
-~/gnuplot-6.0.1 $ gnuplot
-```
-
-A seguinte mensagem deve aparecer:
-
-```
-	G N U P L O T
-	Version 6.0 patchlevel 1    last modified 2024-05-13 
-
-	Copyright (C) 1986-1993, 1998, 2004, 2007-2024
-	Thomas Williams, Colin Kelley and many others
-
-	gnuplot home:     http://www.gnuplot.info
-	faq, bugs, etc:   type "help FAQ"
-	immediate help:   type "help"  (plot window: hit 'h')
-
-	Terminal type is now wxt
-gnuplot> 
-
-
-```
-
-Para um teste rápido, digite `test` e um gráfico deve aparecer
-
-![test-graph](https://github.com/RafaelDexter/GNUPlot/blob/master/img/test.png)
-
-## TiKZ
-
-Siga a sequência de comandos
-
-1
-
-```
-gnuplot> set term tikz fulldoc
-```
-
-2
-
-```
-gnuplot> set output "nome.tex"
-```
-
-3
-
-```
-gnuplot> test
-```
-
-4
-
-```
-gnuplot> q
-```
-
-5
-
-```
-~/gnuplot-6.0.1 $ pdflatex nome.tex && evince nome.pdf
-```
-
-Se tudo der certo, um gráfico idêntico ao anterior aparecerá, porém este será
-no formato `.pdf` .
-
-:alien:
+</div>
